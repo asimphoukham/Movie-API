@@ -1,64 +1,122 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="css/wickedcss.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="css/wickedcss.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <title>Movies</title>
+  </head>
 
-  <title>Movies</title>
-</head>
-
-<body>
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col mt-2 pulse">
-        <h1>Rating Finder</h1>
+  <body>
+    <div class="container-fluid">
+      <div class="row header-padding">
+        <div class="col">
+          <h1>Movie Rating Finder</h1>
+        </div>
       </div>
     </div>
 
-  </div>
-  <div class="container-fluid">
-    <div class="row text-center my-3 searchbar">
-      <div class="col-12">
-            <label for="txtSearch" class="sr-only">Find a movie</label>
-            <input type="text"   id="txtSearch" placeholder="Movie">
-            <button type="button" id="btnSearch" class="btn"><i class="fas fa-search white"></i></button>
+    <!-- Searchbar -->
+    <div class="container-fluid">
+      <div class="row searchbar justify-content-center">
+        <div class="col-4">
+          <div class="input-group">
+            <input
+              type="text"
+              id="movieSearch"
+              class="form-control"
+              placeholder="Search for a movie..."
+            />
+            <div class="input-group-append">
+              <button class="btn btn-secondary" id="searchBtn" type="button" aria-label="Search for movie button">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-----------------------------------Populate Information -------------------------------------------->
-
-<div class="container-fluid">
-  <div class="row text-center">
-    <div class="col-12 mb-3">
-      <div id="ratings"></div>
+    <!---Populate Information --->
+    <div class="container-fluid">
+      <div class="row text-center mt-4">
+        <div class="col-12">
+          <div id="ratings"></div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <script src="js/script.js"></script>
-</body>
+    <!-- Placeholder Card -->
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <div
+            id="placeholderCard"
+            class="card placeholder-card-body"
+            style="display: none"
+          >
+            <div class="card-body">
+              <div class="card-title">No Search Results</div>
+              <p class="card-text">Please enter a movie title to search.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Toast Message -->
+    <div class="toast-container">
+      <div
+        id="errorToast"
+        class="toast toast-error"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-body"></div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/script.js"></script>
+  </body>
 </html>
